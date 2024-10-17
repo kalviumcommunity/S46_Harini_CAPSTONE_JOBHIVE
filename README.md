@@ -29,5 +29,6 @@ JobHive is a web-based platform that connects job seekers and recruiters, provid
 - **Mobile App Development:**  
   A mobile version of JobHive for job searching and recruiting on the go.
 
+Thank you!
 
 
