@@ -9,7 +9,7 @@ cloudinary.v2.config({
 });
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the JobHive Backend!');
+    res.send('database connected sucessfully');
 });
 
 app.listen(process.env.PORT, ()=>{

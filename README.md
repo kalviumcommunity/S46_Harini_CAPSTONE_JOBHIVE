@@ -31,6 +31,3 @@ JobHive is a web-based platform that connects job seekers and recruiters, provid
 
 
 
-
-
-
