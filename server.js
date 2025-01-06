@@ -9,7 +9,7 @@ cloudinary.v2.config({
 });
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the JobHive Backend!');
+    res.send('welcome to Backend Jobhive');
 });
 
 app.listen(process.env.PORT, ()=>{
