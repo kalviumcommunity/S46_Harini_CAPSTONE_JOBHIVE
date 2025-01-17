@@ -32,7 +32,7 @@ JobHive is a web-based platform that connects job seekers and recruiters, provid
 
   Render deploy link:https://s46-harini-capstone-jobhive-4.onrender.com/;
   
-  Frontend Deploy Link:- https://extraordinary-parfait-e45f3d.netlify.app/login
+  Frontend Deploy Link:- https://luxury-haupia-7d279f.netlify.app/login
 
 
 
