@@ -30,6 +30,10 @@ JobHive is a web-based platform that connects job seekers and recruiters, provid
   A mobile version of JobHive for job searching and recruiting on the go.
 
 
+  Render deploy link:https://s46-harini-capstone-jobhive-4.onrender.com/;
+  
+  Frontend Deploy Link:- https://luxury-haupia-7d279f.netlify.app/login
+
 
 
 
