@@ -8,8 +8,9 @@ import PopularCategories from "./PopularCategories";
 import PopularCompanies from "./PopularCompanies";
 
 const Home = () => {
-  const { isAuthorized } = useContext(Context);
-  if (!isAuthorized) {
+  const { token } = useContext(Context);
+  console.log("Authenticate: ", token)
+  if (!token) {
     return <Navigate to={"/login"} />;
   }
   return (

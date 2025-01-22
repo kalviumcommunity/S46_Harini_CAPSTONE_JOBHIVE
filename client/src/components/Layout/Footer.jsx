@@ -5,9 +5,9 @@ import { FaFacebookF, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
-  const { isAuthorized } = useContext(Context);
+  const { token } = useContext(Context);
   return (
-    <footer className={isAuthorized ? "footerShow" : "footerHide"}>
+    <footer className={token ? "footerShow" : "footerHide"}>
       <div>&copy; All Rights Reserved By CodeWithZeeshu.</div>
       <div>
         <Link to={"https://www.facebook.com/profile.php?id=100030535123397"} target="_blank">

@@ -18,24 +18,26 @@ import NotFound from "./components/Notfound/Notfound";
 import MyJobs from "./components/Job/MyJobs";
 
 const App = () => {
-  const { isAuthorized, setIsAuthorized, setUser } = useContext(Context);
+  const { token, setToken, setUser } = useContext(Context);
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/getuser",
+          "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/getuser",
+          // "https://s46-harini-capstone-jobhive-4.onrender.com/api/v1/user/getuser",
+
           {
             withCredentials: true,
           }
         );
         setUser(response.data.user);
-        setIsAuthorized(true);
+        setToken(token);
       } catch (error) {
-        setIsAuthorized(false);
+        console.log(error)
       }
     };
     fetchUser();
-  }, [isAuthorized]);
+  }, []);
 
 
   return (

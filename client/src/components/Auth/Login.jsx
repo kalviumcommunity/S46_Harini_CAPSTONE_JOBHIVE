@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,33 +11,40 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
-  const { isAuthorized, setIsAuthorized } = useContext(Context);
+  const { token, setToken } = useContext(Context);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://s46-harini-capstone-jobhive-4.onrender.com/api/v1/user/login",
+        // "http://localhost:4000/api/v1/user/login",
+        "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/login",
+        
         { email, password, role },
         {
+
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+         
         }
       );
       toast.success(data.message);
       setEmail("");
       setPassword("");
       setRole("");
-      setIsAuthorized(true);
+      const token = data.token;
+      localStorage.setItem("token",token)
+      setToken(token);
+      navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if(isAuthorized){
+  if(token ==""){
     return <Navigate to={'/'}/>
   }
 
