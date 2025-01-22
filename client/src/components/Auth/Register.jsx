@@ -4,7 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
@@ -15,20 +15,22 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
-  const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
+  const { setToken, user, setUser } = useContext(Context);
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/register",
+       
         { name, phone, email, role, password },
         {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+         
         }
       );
       toast.success(data.message);
@@ -37,13 +39,15 @@ const Register = () => {
       setPassword("");
       setPhone("");
       setRole("");
-      setIsAuthorized(true);
+      setToken(data.token);
+      localStorage.setItem("token",token)
+      
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if(isAuthorized){
+  if(token == ""){
     return <Navigate to={'/'}/>
   }
 

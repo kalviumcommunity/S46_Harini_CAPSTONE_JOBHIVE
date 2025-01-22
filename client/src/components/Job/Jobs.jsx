@@ -5,13 +5,16 @@ import { Context } from "../../main";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
-  const { isAuthorized } = useContext(Context);
+  const { token } = useContext(Context);
   const navigateTo = useNavigate();
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:4000/api/v1/job/getall", {
-          withCredentials: true,
+        .get("https://s46-harini-capstone-jobhive.onrender.com/api/v1/job/getall", {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization":token,
+          },
         })
         .then((res) => {
           setJobs(res.data);

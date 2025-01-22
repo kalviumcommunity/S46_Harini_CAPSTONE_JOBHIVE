@@ -8,27 +8,29 @@ import logo from  "/JobZee-logos__white.png"
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const { isAuthorized, setIsAuthorized, user } = useContext(Context);
+  const { token, setToken, user } = useContext(Context);
   const navigateTo = useNavigate();
 
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/logout",
         {
-          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization":token,
+          },
         }
       );
       toast.success(response.data.message);
-      setIsAuthorized(false);
-      navigateTo("/login");
+        navigateTo("/login");
     } catch (error) {
-      toast.error(error.response.data.message), setIsAuthorized(true);
+      toast.error(error.response.data.message)
     }
   };
 
   return (
-    <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
+    <nav className={token ? "navbarShow" : "navbarHide"}>
       <div className="container">
         <div className="logo">
           <img src="/JobZee-logos__white.png" alt="logo" />
