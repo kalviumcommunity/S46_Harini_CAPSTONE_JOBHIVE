@@ -13,8 +13,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
+      console.log("Logout: ", token);
       const response = await axios.get(
-        "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/logout",
+        "http://localhost:4000/api/v1/user/logout",
         {
           headers: {
             "Content-Type": "application/json",
@@ -22,6 +23,8 @@ const Navbar = () => {
           },
         }
       );
+      setToken("");
+      localStorage.removeItem("token");
       toast.success(response.data.message);
         navigateTo("/login");
     } catch (error) {

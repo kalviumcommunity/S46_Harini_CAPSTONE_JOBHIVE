@@ -23,7 +23,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/getuser",
+          "http://localhost:4000/api/v1/user/getuser",
           // "https://s46-harini-capstone-jobhive-4.onrender.com/api/v1/user/getuser",
 
           {

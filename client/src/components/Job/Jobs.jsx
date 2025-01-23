@@ -23,7 +23,7 @@ const Jobs = () => {
       console.log(error);
     }
   }, []);
-  if (!isAuthorized) {
+  if (!token) {
     navigateTo("/");
   }
 

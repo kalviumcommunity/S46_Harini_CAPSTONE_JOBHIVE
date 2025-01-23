@@ -4,7 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaPhoneFlip } from "react-icons/fa6";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
@@ -40,16 +40,14 @@ const Register = () => {
       setPhone("");
       setRole("");
       setToken(data.token);
-      localStorage.setItem("token",token)
-      
+      localStorage.setItem("token",data.token)
+      navigate()
     } catch (error) {
+      console.log("is the issue coming from this ");
       toast.error(error.response.data.message);
     }
   };
 
-  if(token == ""){
-    return <Navigate to={'/'}/>
-  }
 
 
   return (

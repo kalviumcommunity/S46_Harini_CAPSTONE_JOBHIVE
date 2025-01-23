@@ -69,7 +69,7 @@ const PostJob = () => {
   };
 
   const navigateTo = useNavigate();
-  if (!isAuthorized || (user && user.role !== "Employer")) {
+  if (!token|| (user && user.role !== "Employer")) {
     navigateTo("/");
   }
 
