@@ -8,12 +8,15 @@ const JobDetails = () => {
   const [job, setJob] = useState({});
   const navigateTo = useNavigate();
 
-  const { isAuthorized, user } = useContext(Context);
+  const { token, user } = useContext(Context);
 
   useEffect(() => {
     axios
       .get(`http://localhost:4000/api/v1/job/${id}`, {
-        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": token
+        }
       })
       .then((res) => {
         setJob(res.data.job);
@@ -23,7 +26,7 @@ const JobDetails = () => {
       });
   }, []);
 
-  if (!isAuthorized) {
+  if (!token) {
     navigateTo("/login");
   }
 

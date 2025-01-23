@@ -2,21 +2,19 @@ import React, { createContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
-export const Context = createContext({
-  isAuthorized: false,
-});
+export const Context = createContext();
 
 const AppWrapper = () => {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const tkn = localStorage.getItem("token");
   const [user, setUser] = useState({});
+  const [token, setToken] = useState(tkn);
 
   return (
     <Context.Provider
       value={{
-        isAuthorized,
-        setIsAuthorized,
         user,
         setUser,
+        token, setToken
       }}
     >
       <App />
@@ -24,8 +22,4 @@ const AppWrapper = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AppWrapper />
-  </React.StrictMode>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<AppWrapper />);

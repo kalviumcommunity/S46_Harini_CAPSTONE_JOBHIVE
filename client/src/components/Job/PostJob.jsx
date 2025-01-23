@@ -15,7 +15,7 @@ const PostJob = () => {
   const [fixedSalary, setFixedSalary] = useState("");
   const [salaryType, setSalaryType] = useState("default");
 
-  const { isAuthorized, user } = useContext(Context);
+  const { token, user } = useContext(Context);
 
   const handleJobPost = async (e) => {
     e.preventDefault();
@@ -53,9 +53,10 @@ const PostJob = () => {
               salaryTo,
             },
         {
-          withCredentials: true,
+          
           headers: {
             "Content-Type": "application/json",
+            "Authorization":token,
           },
         }
       )
@@ -68,7 +69,7 @@ const PostJob = () => {
   };
 
   const navigateTo = useNavigate();
-  if (!isAuthorized || (user && user.role !== "Employer")) {
+  if (!token|| (user && user.role !== "Employer")) {
     navigateTo("/");
   }
 
