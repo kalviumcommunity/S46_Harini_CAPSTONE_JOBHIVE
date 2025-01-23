@@ -5,13 +5,16 @@ import { Context } from "../../main";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
-  const { isAuthorized } = useContext(Context);
+  const { token } = useContext(Context);
   const navigateTo = useNavigate();
   useEffect(() => {
     try {
       axios
         .get("http://localhost:4000/api/v1/job/getall", {
-          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization":token,
+          },
         })
         .then((res) => {
           setJobs(res.data);
@@ -20,7 +23,7 @@ const Jobs = () => {
       console.log(error);
     }
   }, []);
-  if (!isAuthorized) {
+  if (!token) {
     navigateTo("/");
   }
 
