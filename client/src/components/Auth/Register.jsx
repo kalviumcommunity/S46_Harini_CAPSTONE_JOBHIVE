@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        "https://s46-harini-capstone-jobhive.onrender.com/v1/user/register",
        
         { name, phone, email, role, password },
         {
@@ -43,6 +43,7 @@ const Register = () => {
       localStorage.setItem("token",data.token)
       navigate()
     } catch (error) {
+      console.log(error);
       console.log("is the issue coming from this ");
       toast.error(error.response.data.message);
     }

@@ -18,20 +18,20 @@ import NotFound from "./components/Notfound/Notfound";
 import MyJobs from "./components/Job/MyJobs";
 
 const App = () => {
-  const { token, setToken, setUser } = useContext(Context);
+  const { token, setUser } = useContext(Context);
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/getuser",
-          // "https://s46-harini-capstone-jobhive-4.onrender.com/api/v1/user/getuser",
-
+          "https://s46-harini-capstone-jobhive.onrender.com/api/v1/user/getuser",
           {
-            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": token
+            }
           }
         );
         setUser(response.data.user);
-        setToken(token);
       } catch (error) {
         console.log(error)
       }
