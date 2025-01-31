@@ -12,7 +12,12 @@ import { errorMiddleware } from "./middlewares/error.js";
 
 const app = express();
 dotenv.config({path:'./config/.env'});
-app.use(cors());
+app.use(cors({
+    origin:"*",
+    methods:["GET","POST","DELETE","PUT"],
+    credentials:true,
+})
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));

@@ -12,7 +12,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://s46-harini-capstone-jobhive.onrender.com/api/v1/job/${id}`, {
+      .get(`http://localhost:4000/api/v1/job/${id}`, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": token
