@@ -19,7 +19,6 @@ const Navbar = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            "Authorization":token,
           },
         }
       );
