@@ -44,10 +44,6 @@ const Login = () => {
     }
   };
 
-  if(token ==""){
-    return <Navigate to={'/'}/>
-  }
-
   return (
     <>
       <section className="authPage">

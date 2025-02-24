@@ -62,6 +62,7 @@ const PostJob = () => {
       )
       .then((res) => {
         toast.success(res.data.message);
+        console.log(res.data)
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -106,8 +107,8 @@ const PostJob = () => {
                   Artificial Intelligence
                 </option>
                 <option value="Video Animation">Video Animation</option>
-                <option value="MEAN Stack Development">
-                  MEAN STACK Development
+                <option value="MERN Stack Development">
+                  MERN STACK Development
                 </option>
                 <option value="MEVN Stack Development">
                   MEVN STACK Development
