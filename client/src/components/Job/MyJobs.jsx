@@ -10,7 +10,7 @@ const MyJobs = () => {
   
   const token = localStorage.getItem("token");
 
-  // ✅ Fetch all jobs posted by the user
+  //  Fetch all jobs posted by the user
   useEffect(() => {
     const fetchJobs = async () => {
       setLoading(true);
@@ -32,7 +32,7 @@ const MyJobs = () => {
     fetchJobs();
   }, [token]);
 
-  // ✅ Delete Job
+  //  Delete Job
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this job?")) return;
     try {
@@ -45,7 +45,7 @@ const MyJobs = () => {
     }
   };
 
-  // ✅ Update Job
+  //  Update Job
   const handleUpdate = async () => {
     if (!editJob) return;
     try {
