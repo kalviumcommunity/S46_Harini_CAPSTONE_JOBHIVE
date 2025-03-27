@@ -24,13 +24,11 @@ const Register = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/user/register",
-       
         { name, phone, email, role, password },
         {
           headers: {
             "Content-Type": "application/json",
           },
-         
         }
       );
       toast.success(data.message);
@@ -48,8 +46,6 @@ const Register = () => {
       toast.error(error.response.data.message);
     }
   };
-
-
 
   return (
     <>
